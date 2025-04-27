@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.env/
+
+# Environment variables
+.env
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Database files (se for usar SQLite em dev)
+*.sqlite3
+
+# Logs
+*.log
+
+# Alembic (migrations)
+alembic/versions/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test and coverage files
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Other
+*.bak
+*.swp
