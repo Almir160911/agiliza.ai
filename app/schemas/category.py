@@ -2,13 +2,13 @@ from pydantic import BaseModel
 
 class CategoryBase(BaseModel):
     name: str
-    description: str
+
+    model_config = {
+        "from_attributes": True
+    }
 
 class CategoryCreate(CategoryBase):
     pass
 
-class CategoryResponse(CategoryBase):
+class CategoryRead(CategoryBase):
     id: int
-
-    class Config:
-        orm_mode = True

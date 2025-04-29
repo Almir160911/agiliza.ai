@@ -2,14 +2,15 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 
 class UserBase(BaseModel):
-    email: EmailStr
     name: str
+    email: EmailStr
+
+    model_config = {
+        "from_attributes": True
+    }
 
 class UserCreate(UserBase):
     password: str
 
-class UserResponse(UserBase):
+class UserRead(UserBase):
     id: int
-
-    class Config:
-        orm_mode = True

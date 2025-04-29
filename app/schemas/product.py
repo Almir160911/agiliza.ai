@@ -3,15 +3,17 @@ from typing import Optional
 
 class ProductBase(BaseModel):
     name: str
-    description: str
+    description: Optional[str] = None
     price: float
+    image_url: Optional[str] = None
     category_id: int
+
+    model_config = {
+        "from_attributes": True
+    }
 
 class ProductCreate(ProductBase):
     pass
 
-class ProductResponse(ProductBase):
+class ProductRead(ProductBase):
     id: int
-
-    class Config:
-        orm_mode = True

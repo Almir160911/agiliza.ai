@@ -14,6 +14,7 @@ class Order(Base):
 
     user = relationship('User', back_populates='orders')
     items = relationship('OrderItem', back_populates='order', cascade="all, delete-orphan")
+    payment = relationship("Payment", back_populates="order", uselist=False)
 
     def __repr__(self):
         return f"<Order(id={self.id}, user_id={self.user_id}, total={self.total}, created_at={self.created_at})>"
