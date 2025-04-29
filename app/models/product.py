@@ -1,0 +1,19 @@
+# app/models/product.py
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy.orm import relationship
+from app.core.database import Base
+
+class Product(Base):
+    __tablename__ = 'products'
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    description = Column(String, nullable=True)
+    price = Column(Float)
+    category_id = Column(Integer, ForeignKey('categories.id'))
+
+    category = relationship('Category', back_populates='products')
+    order_items = relationship('OrderItem', back_populates='product')
+
+    def __repr__(self):
+        return f"<Product(name={self.name}, price={self.price}, category_id={self.category_id})>"

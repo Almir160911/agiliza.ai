@@ -1,25 +1,15 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import os
-from dotenv import load_dotenv
 
-# Carregar as variáveis de ambiente do .env
-load_dotenv()
+DATABASE_URL = "postgresql+psycopg2://agiliza_user:senha123@localhost/agiliza_ai"
 
-# Conexão com o banco de dados PostgreSQL
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-# Criação da engine SQLAlchemy
-engine = create_engine(DATABASE_URL, echo=True)
-
-# Criando a base de modelos
-Base = declarative_base()
-
-# Sessão
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Função para obter a sessão
+Base = declarative_base()
+
+# ESSA função abaixo estava faltando
 def get_db():
     db = SessionLocal()
     try:
