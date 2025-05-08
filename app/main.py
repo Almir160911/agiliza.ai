@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.database import engine
-from app.models import user, order, payment, product, category, order_item  # importa os models
+from app.models import user, order, payment, product, category, order_item, product_image, product_video  # importa os models
 from app.routes import user as user_routes
 from app.routes import category as category_routes
 from app.routes import product as product_routes
@@ -17,6 +17,9 @@ user.Base.metadata.create_all(bind=engine)
 category.Base.metadata.create_all(bind=engine)
 product.Base.metadata.create_all(bind=engine)
 order.Base.metadata.create_all(bind=engine)
+product_image.Base.metadata.create_all(bind=engine)
+product_video.Base.metadata.create_all(bind=engine)
+
 
 # Inicializa o app
 app = FastAPI()
