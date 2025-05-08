@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Criando estrutura do projeto agiliza.ai..."
+echo "Criando estrutura do projeto agiliz.ai..."
 
 # Cria a pasta principal
 

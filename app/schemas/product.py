@@ -17,3 +17,10 @@ class ProductCreate(ProductBase):
 
 class ProductRead(ProductBase):
     id: int
+
+class ProductResponse(ProductBase):
+    id: int
+
+    model_config = {
+        "from_attributes": True
+    }

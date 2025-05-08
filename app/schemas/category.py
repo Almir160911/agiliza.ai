@@ -12,3 +12,11 @@ class CategoryCreate(CategoryBase):
 
 class CategoryRead(CategoryBase):
     id: int
+
+class CategoryResponse(CategoryBase):
+    id: int
+
+    model_config = {
+        "from_attributes": True
+    }
+

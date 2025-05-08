@@ -11,7 +11,7 @@ sudo systemctl enable postgresql
 sudo systemctl start postgresql
 
 # 3. Configurações
-DB_NAME="agiliza"    # troque aqui se seu banco tiver outro nome no database.py
+DB_NAME="agiliz"    # troque aqui se seu banco tiver outro nome no database.py
 DB_USER="admin"    # troque aqui pelo user do seu database.py
 DB_PASS="123"      # troque aqui pela senha do seu database.py
 

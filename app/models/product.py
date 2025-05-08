@@ -11,6 +11,9 @@ class Product(Base):
     description = Column(String, nullable=True)
     price = Column(Float)
     category_id = Column(Integer, ForeignKey('categories.id'))
+    images = relationship("ProductImage", back_populates="product", cascade="all, delete")
+    videos = relationship("ProductVideo", back_populates="product", cascade="all, delete")
+
 
     category = relationship('Category', back_populates='products')
     order_items = relationship('OrderItem', back_populates='product')
