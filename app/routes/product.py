@@ -1,9 +1,12 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from typing import List
-
 from app import schemas, crud
 from app.core.database import get_db
+from app.schemas.product import ProductCreate
+from app.schemas.product import Product
+from app.schemas.product import ProductUpdate
+from app.schemas.supplier import Supplier
 
 router = APIRouter(
     prefix="/products",
@@ -11,17 +14,17 @@ router = APIRouter(
 )
 
 # Criar produto
-@router.post("/", response_model=schemas.Product)
-def create_product(product: schemas.ProductCreate, db: Session = Depends(get_db)):
+@router.post("/", response_model=ProductCreate)
+def create_product(product: ProductCreate, db: Session = Depends(get_db)):
     return crud.product.create_product(db=db, product=product)
 
 # Listar todos os produtos
-@router.get("/", response_model=List[schemas.Product])
+@router.get("/", response_model=List[Product])
 def read_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.product.get_products(db=db, skip=skip, limit=limit)
 
 # Obter produto por ID
-@router.get("/{product_id}", response_model=schemas.Product)
+@router.get("/{product_id}", response_model=Product)
 def read_product(product_id: int, db: Session = Depends(get_db)):
     db_product = crud.product.get_product(db=db, product_id=product_id)
     if not db_product:
@@ -29,8 +32,8 @@ def read_product(product_id: int, db: Session = Depends(get_db)):
     return db_product
 
 # Atualizar produto
-@router.put("/{product_id}", response_model=schemas.Product)
-def update_product(product_id: int, product: schemas.ProductUpdate, db: Session = Depends(get_db)):
+@router.put("/{product_id}", response_model=Product)
+def update_product(product_id: int, product: ProductUpdate, db: Session = Depends(get_db)):
     db_product = crud.product.update_product(db=db, product_id=product_id, product=product)
     if not db_product:
         raise HTTPException(status_code=404, detail="Produto não encontrado para atualização")
@@ -44,7 +47,7 @@ def delete_product(product_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Produto não encontrado para exclusão")
     return {"ok": True, "message": "Produto deletado com sucesso"}
 
-@router.get("/{product_id}/suppliers", response_model=list[schemas.Supplier])
+@router.get("/{product_id}/suppliers", response_model=list[Supplier])
 def read_product_suppliers(product_id: int, db: Session = Depends(get_db)):
     suppliers = crud.product.get_suppliers_by_product(db, product_id)
     if suppliers is None:

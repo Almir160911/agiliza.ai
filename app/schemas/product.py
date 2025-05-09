@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
-from app.schemas.supplier import SupplierBasic  # versão reduzida
+from app.schemas.shared_schemas import SupplierBasic
 
 class ProductBase(BaseModel):
     name: str

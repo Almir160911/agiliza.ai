@@ -2,7 +2,6 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from app.core.database import Base
-# product.py
 from app.models.association import product_supplier_table
 
 

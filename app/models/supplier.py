@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 from app.models.product_supplier import product_supplier_table
+from app.schemas.shared_schemas import SupplierBasic
 
 class Supplier(Base):
     __tablename__ = "suppliers"
