@@ -1,26 +1,28 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import List, Optional
+from app.schemas.supplier import SupplierBasic  # versão reduzida
 
 class ProductBase(BaseModel):
     name: str
     description: Optional[str] = None
     price: float
-    image_url: Optional[str] = None
-    category_id: int
-
-    model_config = {
-        "from_attributes": True
-    }
 
 class ProductCreate(ProductBase):
-    pass
+    supplier_ids: Optional[List[int]] = []  # IDs dos fornecedores
 
-class ProductRead(ProductBase):
+class ProductUpdate(ProductBase):
+    supplier_ids: Optional[List[int]] = []
+
+class Product(ProductBase):
     id: int
+    suppliers: Optional[List[SupplierBasic]] = []
 
-class ProductResponse(ProductBase):
+    class Config:
+        from_attributes = True
+
+class ProductBasic(BaseModel):
     id: int
+    name: str
 
-    model_config = {
-        "from_attributes": True
-    }
+    class Config:
+        from_attributes = True
