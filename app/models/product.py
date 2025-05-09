@@ -2,6 +2,9 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from app.core.database import Base
+# product.py
+from app.models.association import product_supplier_table
+
 
 class Product(Base):
     __tablename__ = 'products'
@@ -17,6 +20,8 @@ class Product(Base):
 
     category = relationship('Category', back_populates='products')
     order_items = relationship('OrderItem', back_populates='product')
+    suppliers = relationship("Supplier", secondary=product_supplier_table, back_populates="products")
+
 
     def __repr__(self):
         return f"<Product(name={self.name}, price={self.price}, category_id={self.category_id})>"
