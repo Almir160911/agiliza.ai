@@ -10,7 +10,7 @@ class Category(Base):
     name = Column(String, index=True)
     description = Column(String, nullable=True)
 
-    products = relationship('Product', back_populates='category')
+    products = relationship('Product', back_populates='category', cascade="all, delete")
 
     def __repr__(self):
         return f"<Category(name={self.name}, description={self.description})>"

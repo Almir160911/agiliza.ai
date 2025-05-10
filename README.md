@@ -40,11 +40,12 @@ app/
     Crie um arquivo .env (ou configure diretamente em core/config.py):
 
     DATABASE_URL=postgresql://usuario:senha@localhost:5432/agiliz.ai
-    SECRET_KEY=sua-chave-secreta
+    SECRET_KEY=oyIB5PeILyZjjo5QJ3nhxbwYPpTl35NNMKQgH3fYHg4
     ALGORITHM=HS256
 
 
 ### Execute as migrações com Alembic
+    alembic revision --autogenerate -m "migração correta sem apagar tabelas"
 
     alembic upgrade head
 
