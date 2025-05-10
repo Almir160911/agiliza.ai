@@ -5,6 +5,7 @@ from app.schemas.shared_schemas import ProductBasic
 class SupplierBase(BaseModel):
     name: str
     contact_email: Optional[str] = None
+    whatsapp: str
 
 class SupplierCreate(SupplierBase):
     product_ids: Optional[List[int]] = []  # IDs dos produtos fornecidos

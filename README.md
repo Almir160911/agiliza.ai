@@ -45,7 +45,8 @@ app/
 
 
 ### Execute as migrações com Alembic
-    alembic revision --autogenerate -m "migração correta sem apagar tabelas"
+    alembic revision --autogenerate -m "migração correta sem apagar tabelas" 
+    # esta gerando o arquivo da migração com drop table na atualização.Em análise
 
     alembic upgrade head
 

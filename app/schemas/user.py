@@ -6,7 +6,7 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     entregador: Optional[bool] = False  # novo campo
-
+    whatsapp: str
     class Config:
         from_attributes = True
 
